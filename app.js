@@ -80,11 +80,15 @@ const connectDB = async () => {
 const PORT = process.env.PORT || 3000;
 
 (async () => {
-    await connectDB();
-    // Khởi động server
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    });
+    try {
+        await connectDB();
+        // Khởi động server
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error('Failed to start server:', error);
+    }
 })();
 
 module.exports = app;
