@@ -31,6 +31,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
+app.use(session({
+    secret: "123",
+    resave: false,
+    saveUninitialized: false
+}));
 
 // Flash middlewares
 app.use(flash());
